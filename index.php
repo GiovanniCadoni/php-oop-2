@@ -28,13 +28,18 @@ require_once __DIR__ . "/database/db.php";
                                 <?php echo $prodotto->getNome() ?>
                             </h4>
                             <div class="card-text">
+                                <div class="pb-3">
+                                    <i class="fs-4 <?php echo $prodotto->getCategoria()->getIcona(); ?> "></i>
+                                    <span class="fs-4"> <?php echo $prodotto->getCategoria()->getNome(); ?> </span>
+                                </div>
                                 <?php if (is_a($prodotto, 'Giocattolo')) { ?>
                                     <p class="fs-5 text-success"> Materiale: <?php echo $prodotto->getMateriale() ?> </p>
                                 <?php } else if (is_a($prodotto, 'Cibo')) { ?>
                                     <p class="fs-5 text-success"> Al gusto di <?php echo $prodotto->getGusto() ?> </p>
                                 <?php } ?>
-                                <i class="fs-4 <?php echo $prodotto->getCategoria()->getIcona(); ?> "></i>
-                                <span class="fs-4"> <?php echo $prodotto->getCategoria()->getNome(); ?> </span>
+                                <p>
+                                    Peso confezione: <?php echo $prodotto->getPeso(); ?>
+                                </p>
                                 <p class="text-danger pt-3 fs-3">
                                     <?php echo $prodotto->getPrezzo(); ?> $
                                 </p>

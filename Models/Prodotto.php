@@ -2,6 +2,7 @@
 require_once __DIR__ . "/Categoria.php";
 
 class Prodotto {
+
     protected $nome;
     protected $prezzo;
     protected $quantita = 0;
@@ -47,7 +48,6 @@ class Prodotto {
         return $this->categoria;
     }
 
-    //Funzioni inserite in seguito alla visione del live coding
     public function prodottoDisponibile($quantita) {
         if($this->quantita >= $quantita) {
             return true;
@@ -64,7 +64,7 @@ class Prodotto {
         if($this->prodottoDisponibile($quantita_to_remove)) {
             $this->quantita -= $quantita_to_remove;
         } else {
-            return "Quantita non presente";
+            throw new Exception('Quantita non presente');
         }
     }
 }
